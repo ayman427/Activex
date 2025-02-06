@@ -17,7 +17,6 @@
         <!-- Styles -->
         @livewireStyles
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="font-sans antialiased">
         <x-banner />
@@ -44,5 +43,4 @@
 
         @livewireScripts
     </body>
-    <x-footer/>
 </html>
