@@ -58,7 +58,7 @@
         </p>
 
         <p class="mt-1 text-sm">
-            <a href="https://laracasts.com" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
+            <a href="{{ route('calorie-tracker.index') }}" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
                 Calorie Tracker
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 size-5 fill-indigo-500 dark:fill-indigo-200">
@@ -78,7 +78,7 @@
             </h2>
         </div>
 
-        <p class="mt-1 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
         <ul class="mt-1">
         @props(['latestPosts'])
         @if($latestPosts->isEmpty())
