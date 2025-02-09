@@ -6,6 +6,7 @@ use App\Http\Controllers\CalorieTrackerController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\DashboardController;
 use App\Models\User;  
 use Illuminate\Http\Request;
 
@@ -18,9 +19,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/home', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/weight-tracker', [WeightTrackerController::class, 'index'])->name('weight-tracker.index');
     Route::post('/weight-tracker', [WeightTrackerController::class, 'store']);
