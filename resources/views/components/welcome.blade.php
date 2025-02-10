@@ -54,7 +54,6 @@
         <p class="mt-1 text-gray-500 dark:text-gray-400 text-2xl leading-relaxed">
         @props(['totalCalories'])
            {{ $totalCalories }} kcal <br>
-           Recorded on: {{ \Carbon\Carbon::parse($latestWeight->created_at)->format('d M Y') }}
         </p>
 
         <p class="mt-1 text-sm">
@@ -89,7 +88,9 @@
                                     <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200">{{ $post->title }}</h4>
                                     <p class="text-sm text-gray-500 dark:text-gray-400">{{ Str::limit($post->content, 100) }}</p>
                                     <p class="text-sm text-gray-400 dark:text-gray-500">Posted by: {{ $post->user->name }}</p>
-                                    <a href="{{ route('post.show', $post->id) }}" class="text-blue-500 hover:underline">Read More</a>
+                                    <a href="{{ route('post.show', $post->id) }}" class="inline-flex items-center text-indigo-700 dark:text-indigo-300 hover:underline">Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 size-5 fill-indigo-500 dark:fill-indigo-200">
+                    <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
+                </svg></a>
                                 </li>
                             @endforeach
                         @endif
