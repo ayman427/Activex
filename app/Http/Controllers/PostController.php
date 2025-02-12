@@ -7,6 +7,8 @@ use App\Models\Comment;
 use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\PostCreatedMail;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -34,6 +36,13 @@ class PostController extends Controller
             'content' => $request->content,
             'user_id' => auth()->id(),
         ]);
+
+        $users = \App\Models\User::where('id', '!=', auth()->id())->get();
+
+        // Queue the email for each user
+        foreach ($users as $user) {
+            Mail::to($user->email)->queue(new PostCreatedMail($post));
+        }
 
         return redirect()->route('post.show', $post->id)->with('success', 'Post created successfully!');
     }
