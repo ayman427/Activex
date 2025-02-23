@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'ninjas' => [
+    'base_url' => 'https://api.api-ninjas.com/v1/caloriesburned',
+    'key' => env('NINJAS_API_KEY'),
+],
+
 ];

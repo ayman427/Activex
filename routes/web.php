@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\WorkoutTrackerController;
 use App\Models\User;  
 use Illuminate\Http\Request;
 
@@ -47,6 +48,10 @@ Route::middleware([
     Route::post('/recipes/favorite', [RecipeController::class, 'addToFavorites'])->name('recipes.addToFavorites');
     Route::get('/favorites', [RecipeController::class, 'viewFavorites'])->name('recipes.favorites');
     Route::delete('/recipes/favorite/{id}', [RecipeController::class, 'deleteFavorite'])->name('recipes.deleteFavorite');
+
+
+    Route::get('/workouts', [WorkoutTrackerController::class, 'index'])->name('workouts.index');
+    Route::post('/workouts', [WorkoutTrackerController::class, 'store'])->name('workouts.store');
 
 
 
