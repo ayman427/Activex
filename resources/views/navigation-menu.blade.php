@@ -21,6 +21,9 @@
                     <x-nav-link href="{{ route('calorie-tracker.index') }}" :active="request()->routeIs('calorie-tracker')">
                         {{ __('Calorie Tracker') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('recipes.index') }}" :active="request()->routeIs('recipes')">
+                        {{ __('Recipes') }}
+                    </x-nav-link>
                     <x-nav-link href="{{ route('forum.index') }}" :active="request()->routeIs('forum')">
                         {{ __('Community Forum') }}
                     </x-nav-link>
@@ -112,6 +115,9 @@
                             </x-dropdown-link>
                             <x-dropdown-link href="{{ route('user.posts') }}">
                                 {{ __('Your Posts') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('recipes.favorites') }}">
+                                {{ __('Your Favorite Recipes') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

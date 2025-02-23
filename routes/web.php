@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RecipeController;
 use App\Models\User;  
 use Illuminate\Http\Request;
 
@@ -39,6 +40,16 @@ Route::middleware([
     
     // Route to delete a post
     Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('post.delete');
+
+
+   // routes/web.php
+    Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
+    Route::post('/recipes/favorite', [RecipeController::class, 'addToFavorites'])->name('recipes.addToFavorites');
+    Route::get('/favorites', [RecipeController::class, 'viewFavorites'])->name('recipes.favorites');
+    Route::delete('/recipes/favorite/{id}', [RecipeController::class, 'deleteFavorite'])->name('recipes.deleteFavorite');
+
+
+
     
 });
 
