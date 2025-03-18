@@ -21,6 +21,9 @@
                     <x-nav-link href="{{ route('calorie-tracker.index') }}" :active="request()->routeIs('calorie-tracker')">
                         {{ __('Calorie Tracker') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('workouts.index') }}" :active="request()->routeIs('workouts')">
+                        {{ __('Workout Tracker') }}
+                    </x-nav-link>
                     <x-nav-link href="{{ route('recipes.index') }}" :active="request()->routeIs('recipes')">
                         {{ __('Recipes') }}
                     </x-nav-link>
