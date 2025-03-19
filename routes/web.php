@@ -9,6 +9,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\WorkoutTrackerController;
+use App\Http\Controllers\MealSuggestionController;
 use App\Models\User;  
 use Illuminate\Http\Request;
 
@@ -53,6 +54,10 @@ Route::middleware([
     Route::get('/workouts', [WorkoutTrackerController::class, 'index'])->name('workouts.index');
     Route::post('/workouts', [WorkoutTrackerController::class, 'store'])->name('workouts.store');
 
+   
+
+    Route::get('/meal-suggestions', [MealSuggestionController::class, 'getMealSuggestions'])->name('meal.suggestions');
+    Route::post('/chat', [MealSuggestionController::class, 'chat']);
 
 
     

@@ -7,7 +7,7 @@
         </h2>
     </x-slot>
 
-    <div class="container mx-auto px-4 py-8">
+    <div class="container max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
         <form method="POST" action="{{ route('post.update', $post) }}">
             @csrf
             @method('PUT')

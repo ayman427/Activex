@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="container mx-auto px-4 py-8">
+    <div class="container max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
         <!-- Post Creation Form -->
         <div class="bg-white shadow rounded-lg p-6 mb-6 dark:bg-gray-800">
             <h2 class="text-xl font-semibold mb-4 dark:text-gray-200">Create a New Post</h2>

@@ -11,26 +11,51 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('weight-tracker.index') }}" :active="request()->routeIs('weight-tracker')">
-                        {{ __('Weight Tracker') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('calorie-tracker.index') }}" :active="request()->routeIs('calorie-tracker')">
-                        {{ __('Calorie Tracker') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('workouts.index') }}" :active="request()->routeIs('workouts')">
-                        {{ __('Workout Tracker') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('recipes.index') }}" :active="request()->routeIs('recipes')">
-                        {{ __('Recipes') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('forum.index') }}" :active="request()->routeIs('forum')">
-                        {{ __('Community Forum') }}
-                    </x-nav-link>
-                </div>
+                <div class="hidden sm:flex sm:items-center sm:space-x-8 sm:ms-10">
+    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+        {{ __('Dashboard') }}
+    </x-nav-link>
+
+    <!-- Trackers Dropdown -->
+    <div x-data="{ open: false }" class="relative">
+        <button @click="open = !open" @click.away="open = false"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-gray-700 dark:text-gray-300 hover:border-gray-300 focus:outline-none transition duration-150 ease-in-out">
+            {{ __('Trackers') }}
+            <svg class="w-4 h-4 ml-2 transition-transform transform" :class="{ 'rotate-180': open }"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+            </svg>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div x-show="open" @click.away="open = false"
+            class="absolute left-0 mt-4 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-50 p-2"
+            x-cloak>
+            <x-nav-link href="{{ route('weight-tracker.index') }}" :active="request()->routeIs('weight-tracker')"
+                class="block px-6 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                {{ __('Weight Tracker') }}
+            </x-nav-link>
+            <x-nav-link href="{{ route('calorie-tracker.index') }}" :active="request()->routeIs('calorie-tracker')"
+                class="block px-6 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                {{ __('Calorie Tracker') }}
+            </x-nav-link>
+            <x-nav-link href="{{ route('workouts.index') }}" :active="request()->routeIs('workouts')"
+                class="block px-6 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                {{ __('Workout Tracker') }}
+            </x-nav-link>
+        </div>
+    </div>
+
+    <x-nav-link href="{{ route('meal.suggestions') }}" :active="request()->routeIs('meal-suggestions')">
+        {{ __('AI Meal Planner') }}
+    </x-nav-link>
+    <x-nav-link href="{{ route('forum.index') }}" :active="request()->routeIs('forum')">
+        {{ __('Community Forum') }}
+    </x-nav-link>
+</div>
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -119,9 +144,6 @@
                             <x-dropdown-link href="{{ route('user.posts') }}">
                                 {{ __('Your Posts') }}
                             </x-dropdown-link>
-                            <x-dropdown-link href="{{ route('recipes.favorites') }}">
-                                {{ __('Your Favorite Recipes') }}
-                            </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -159,20 +181,45 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+    <div class="pt-2 pb-3 space-y-1">
+    <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+        {{ __('Dashboard') }}
+    </x-responsive-nav-link>
+
+    <!-- Trackers Dropdown -->
+    <div x-data="{ open: false }" class="relative">
+        <button @click="open = !open"
+            class="w-full flex justify-between px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-md">
+            {{ __('Trackers') }}
+            <svg class="w-4 h-4 transition-transform transform" :class="{ 'rotate-180': open }"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div x-show="open" class="mt-2 space-y-1 bg-white dark:bg-gray-800 rounded-md shadow-md p-2" x-cloak>
             <x-responsive-nav-link href="{{ route('weight-tracker.index') }}" :active="request()->routeIs('weight-tracker')">
                 {{ __('Weight Tracker') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('calorie-tracker.index') }}" :active="request()->routeIs('calorie-tracker')">
                 {{ __('Calorie Tracker') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('forum.index') }}" :active="request()->routeIs('forum')">
-                {{ __('Community Forum') }}
+            <x-responsive-nav-link href="{{ route('workouts.index') }}" :active="request()->routeIs('workouts')">
+                {{ __('Workout Tracker') }}
             </x-responsive-nav-link>
         </div>
+    </div>
+
+    <x-responsive-nav-link href="{{ route('meal.suggestions') }}" :active="request()->routeIs('meal-suggestions')">
+        {{ __('AI Meal Planner') }}
+    </x-responsive-nav-link>
+
+    <x-responsive-nav-link href="{{ route('forum.index') }}" :active="request()->routeIs('forum')">
+        {{ __('Community Forum') }}
+    </x-responsive-nav-link>
+</div>
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
@@ -249,4 +296,3 @@
         </div>
     </div>
 </nav>
-

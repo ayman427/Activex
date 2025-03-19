@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="container mx-auto px-4 py-8">
+    <div class="container max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
 
         @if($posts->isEmpty())
             <p class="text-gray-500 dark:text-gray-200">You haven't made any posts yet.</p>
@@ -26,7 +26,7 @@
                         <a href="{{ route('post.edit', $post) }}" class="text-black px-4 py-2 rounded hover:bg-blue-600 flex items-center" style="background-color: #2563eb; margin-right:5px">
                             <span class="material-icons">edit</span>
                         </a>
-                        
+
                         <!-- Delete Button with Google Material Icon -->
                         <form method="POST" action="{{ route('post.delete', $post) }}" class="inline-block" onsubmit="return confirmDelete()">
                             @csrf

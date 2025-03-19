@@ -1,11 +1,11 @@
 <x-app-layout>
-    <div class="container mx-auto px-4 py-8">
+    <div class="container max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
         <!-- Post Content -->
         <div class="bg-white shadow rounded-lg p-6 mb-6 dark:bg-gray-800">
             <h1 class="text-2xl font-bold mb-6 dark:text-gray-200">{{ $post->title }}</h1>
             <p class="text-gray-800 mb-4 dark:text-gray-200">{{ $post->content }}</p>
-            <p class="text-sm text-gray-500 dark:text-gray-400">Posted by 
-                {{ $post->user ? $post->user->name : 'Unknown User' }} 
+            <p class="text-sm text-gray-500 dark:text-gray-400">Posted by
+                {{ $post->user ? $post->user->name : 'Unknown User' }}
                 on {{ $post->created_at->format('M d, Y') }}
             </p>
         </div>
@@ -20,8 +20,8 @@
                 @foreach($post->comments as $comment)
                     <div class="border-b border-gray-200 mb-4 pb-4">
                         <p class="text-gray-800 dark:text-gray-200">{{ $comment->content }}</p>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Posted by 
-                            {{ $comment->user ? $comment->user->name : 'Unknown User' }} 
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Posted by
+                            {{ $comment->user ? $comment->user->name : 'Unknown User' }}
                             on {{ $comment->created_at->format('M d, Y') }}
                         </p>
                     </div>
